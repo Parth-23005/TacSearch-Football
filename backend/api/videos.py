@@ -51,7 +51,17 @@ def create_video(
     session.refresh(video)
     
     # Trigger background processing
-    background_tasks.add_task(process_video_task, video.id)
+    # Use loop.run_in_executor to avoid blocking main thread with sync CPU work
+    import asyncio
+    from concurrent.futures import ThreadPoolExecutor
+    
+    # Define wrapper for async execution
+    async def run_processing_async(vid_id):
+        loop = asyncio.get_running_loop()
+        # Run in default executor (thread pool)
+        await loop.run_in_executor(None, process_video_task, vid_id)
+
+    background_tasks.add_task(run_processing_async, video.id)
     
     return {
         "filename": safe_filename,

@@ -68,7 +68,7 @@ def process_video_task(video_id: int):
         
         try:
             # Update progress: Started
-            video.processing_progress = 5.0
+            video.processing_progress = 0.0
             session.add(video)
             session.commit()
 
@@ -211,7 +211,7 @@ def process_video_task(video_id: int):
                         
                     # Update progress in DB periodically
                     if len(segments_to_save) % 5 == 0 and len(segments_to_save) > 0:
-                        progress = 10.0 + (current_time / duration) * 80.0
+                        progress = (current_time / duration) * 100.0
                         video.processing_progress = progress / 100.0
                         session.add(video)
                         session.commit()

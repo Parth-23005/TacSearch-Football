@@ -136,7 +136,7 @@ export default function Library() {
                                     <div className="aspect-video bg-black/40 relative flex items-center justify-center border-b border-white/5 cursor-pointer" onClick={() => window.location.href = `/analysis/${video.id}`}>
                                         <Film className="w-12 h-12 text-white/10 group-hover:text-primary/50 transition-colors" />
                                         <div className="absolute top-2 right-2 px-2 py-1 rounded bg-black/60 text-xs font-mono text-white">
-                                            {video.processed ? "READY" : `${Math.floor(video.processingProgress || 0)}%`}
+                                            {video.processed ? "READY" : `${Math.floor((video.processingProgress || 0) * 100)}%`}
                                         </div>
                                     </div>
                                     <CardContent className="p-5">
@@ -147,7 +147,7 @@ export default function Library() {
                                             <div className="w-full bg-white/10 rounded-full h-1.5 mb-4">
                                                 <div
                                                     className="bg-primary h-1.5 rounded-full transition-all duration-500 neon-glow"
-                                                    style={{ width: `${video.processingProgress || 0}%` }}
+                                                    style={{ width: `${(video.processingProgress || 0) * 100}%` }}
                                                 />
                                             </div>
                                         )}
