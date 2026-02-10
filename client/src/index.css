@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* HSL Space Separated Values */
+  
+  /* Deep Navy Background #0a192f */
+  --background: 216 65% 11%;
+  
+  /* Lightest Slate Foreground #e6f1ff */
+  --foreground: 210 100% 95%;
+
+  /* Card Background (Lighter Navy) #112240 */
+  --card: 218 57% 16%;
+  --card-foreground: 210 100% 95%;
+  --card-border: 218 57% 25%;
+
+  /* Popover */
+  --popover: 216 65% 11%;
+  --popover-foreground: 210 100% 95%;
+
+  /* Neon Green Primary #64ffda */
+  --primary: 160 100% 70%;
+  --primary-foreground: 216 65% 11%;
+
+  /* Electric Blue Secondary #007bff -> Adjusted to fit theme #3a86ff */
+  --secondary: 217 100% 61%;
+  --secondary-foreground: 210 100% 98%;
+
+  /* Muted Slate #8892b0 */
+  --muted: 217 20% 61%;
+  --muted-foreground: 217 20% 75%;
+
+  /* Accent (Purple/Pink for heatmap intensity) */
+  --accent: 280 80% 60%;
+  --accent-foreground: 210 100% 98%;
+
+  /* Destructive Red */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  /* Borders (Subtle line) */
+  --border: 217 30% 25%;
+  --input: 217 30% 25%;
+  
+  /* Neon Glow Ring */
+  --ring: 160 100% 70%;
+
+  --radius: 0.5rem;
+  
+  /* Fonts */
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Rajdhani', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-wide font-bold;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-md border border-white/5 shadow-xl;
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+  }
+  
+  .neon-glow-hover:hover {
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+  }
+}
+
+/* Custom Scrollbar for that terminal feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 rounded-full hover:bg-slate-600 transition-colors;
+}

@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+ultralytics
+transformers
+torch
+Pillow
+numpy
+opencv-python
+ftfy
+regex
+tqdm
+scikit-learn
